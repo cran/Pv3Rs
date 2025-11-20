@@ -100,6 +100,13 @@
 #'   }
 #'
 #' @examples
+#' # Running example (runs across compute_posterior, plot_data and plot_simplex)
+#' # based on real data from chloroquine-treated participant 52 of the Vivax
+#' # History Trial (Chu et al. 2018a, https://doi.org/10.1093/cid/ciy319)
+#' y <- ys_VHX_BPD[["VHX_52"]] # y is a list of length two (two episodes)
+#' compute_posterior(y, fs_VHX_BPD, progress.bar = FALSE)
+#'
+#'
 #' # Numerically named alleles
 #' y <- list(enrol = list(m1 = c('3','2'), m2 = c('1','2')),
 #'           recur1 = list(m1 = c('1','4'), m2 = c('1')),

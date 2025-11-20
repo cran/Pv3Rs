@@ -9,6 +9,7 @@ plot_simplex(
   v.cutoff = 0.5,
   v.colours = c("yellow", "purple", "red"),
   plot.tri = TRUE,
+  lim.mar = 0.1,
   p.coords = NULL,
   p.labels = rownames(p.coords),
   p.labels.pos = 3,
@@ -29,6 +30,8 @@ classification; see
 \item{v.colours}{Vertex colours anticlockwise from top.}
 
 \item{plot.tri}{Logical; draws the triangular boundary if \code{TRUE} (default).}
+
+\item{lim.mar}{Margin away from simplex for axes limits; defaults to 0.1.}
 
 \item{p.coords}{Matrix of 3D simplex coordinates (e.g., per-recurrence
 probabilities of recrudescence, relapse and reinfection), one vector of 3D
@@ -59,7 +62,14 @@ reinfection (or any other probability triplet summing to
 one) can be projected; see \code{\link[=project2D]{project2D()}} and \strong{Examples} below.
 }
 \examples{
-# Plot 2D simplex
+# Running example (runs across compute_posterior, plot_data and plot_simplex)
+# based on real data from chloroquine-treated participant 52 of the Vivax
+# History Trial (Chu et al. 2018a, https://doi.org/10.1093/cid/ciy319)
+y <- ys_VHX_BPD[["VHX_52"]] # y is a list of length two (two episodes)
+post <- compute_posterior(y, fs_VHX_BPD, progress.bar = FALSE)
+plot_simplex(p.coords = post$marg, p.labels = "", pch = 20, cex = 2)
+
+# Basic example
 plot_simplex(p.coords = diag(3),
              p.labels = c("(1,0,0)", "(0,1,0)", "(0,0,1)"),
              p.labels.pos = c(1,3,3))
